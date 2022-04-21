@@ -7,5 +7,6 @@ namespace IA_Project.Models
 {
     public class database
     {
+
     }
 }
