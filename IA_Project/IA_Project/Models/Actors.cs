@@ -12,9 +12,5 @@ namespace IA_Project.Models
         public string Lname { get; set; }
         public int age { get; set; }
         public string imge { get; set; }
-
-
-
-
     }
 }

@@ -457,6 +457,7 @@
     <Content Include="Views\admin\homemovie.cshtml" />
     <Content Include="Views\admin\homeactor.cshtml" />
     <Content Include="Views\admin\homedirector.cshtml" />
+    <Content Include="Views\admin\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

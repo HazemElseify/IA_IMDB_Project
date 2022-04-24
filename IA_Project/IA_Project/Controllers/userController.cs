@@ -1,11 +1,9 @@
-﻿using IA_Project.Models;
+﻿using IMDB_project.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace IMDB_project.Controllers
+namespace IA_Project.Controllers
 {
     public class userController : Controller
     {
