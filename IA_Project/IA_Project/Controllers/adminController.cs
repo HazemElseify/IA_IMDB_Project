@@ -23,7 +23,7 @@ namespace IA_Project.Controllers
         }
         [ActionName("homeactor")]
         [HttpPost]
-        public ActionResult homeactor_post(int id , int age,String Fname,String Lname,String Img)
+        public ActionResult homeactor_post(int id, int age, String Fname, String Lname, String Img)
         {
             Actors A = new Actors();
             A.id = id;
@@ -34,6 +34,11 @@ namespace IA_Project.Controllers
             database.updateActor(A);
             return RedirectToAction("homeactor");
         }
+        public ActionResult homeactordelete(int id)
+        {
+            database.deleteActor(id);
+            return RedirectToAction("homeactor");
+        }
         public ActionResult homedirector()
         {
             return View();
@@ -42,5 +47,6 @@ namespace IA_Project.Controllers
         {
             return View();
         }
+
     }
 }

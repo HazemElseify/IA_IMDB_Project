@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IMDB_project.Controllers
+namespace IA_Project.Controllers
 {
     public class HomeController : Controller
     {

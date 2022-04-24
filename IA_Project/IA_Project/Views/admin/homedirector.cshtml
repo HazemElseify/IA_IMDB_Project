@@ -1,9 +1,9 @@
 ﻿
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "home";
-                Layout = null;
+    ViewBag.Title = "home";
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -247,9 +247,9 @@
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <nav>
                         <ul class="nav navbar-nav">
-                            <li><a>Movies</a></li>
-                            <li><a>Actors</a></li>
-                            <li class="active"><a>directors</a></li>
+                            <li><a href="@Url.Action("homemovie","admin")">Movies</a></li>
+                            <li><a href="@Url.Action("homeactor","admin")">Actors</a></li>
+                            <li class="active"><a href="@Url.Action("homedirector","admin")">directors</a></li>
                             <li><a>Logout</a></li>
                         </ul>
                     </nav>
@@ -287,7 +287,7 @@
                         <tr>
                             <td>1</td>
                             <td>
-                                <img src="https://i.guim.co.uk/img/media/fbada356508cc3df399c4459cb626992713ef25f/0_221_2000_1200/master/2000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=044f5cbc814b10db9901f165da73631c"class="img-responsive" alt="Cinque Terre" width="50" height="50" >
+                                <img src="https://i.guim.co.uk/img/media/fbada356508cc3df399c4459cb626992713ef25f/0_221_2000_1200/master/2000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=044f5cbc814b10db9901f165da73631c" class="img-responsive" alt="Cinque Terre" width="50" height="50">
 
                             </td>
                             <td>Christopher</td>
