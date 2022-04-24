@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IA_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,11 +14,31 @@ namespace IA_Project.Controllers
         {
             return View();
         }
+        [ActionName("homeactor")]
+        [HttpGet]
         public ActionResult homeactor()
+        {
+            var listofActors = database.GetActors();
+            return View(listofActors);
+        }
+        [ActionName("homeactor")]
+        [HttpPost]
+        public ActionResult homeactor_post(int id , int age,String Fname,String Lname,String Img)
+        {
+            Actors A = new Actors();
+            A.id = id;
+            A.age = age;
+            A.Fname = Fname;
+            A.Lname = Lname;
+            A.imge = Img;
+            database.updateActor(A);
+            return RedirectToAction("homeactor");
+        }
+        public ActionResult homedirector()
         {
             return View();
         }
-        public ActionResult homedirector()
+        public ActionResult test()
         {
             return View();
         }
