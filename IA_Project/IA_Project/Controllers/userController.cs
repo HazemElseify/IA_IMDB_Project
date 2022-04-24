@@ -1,4 +1,4 @@
-﻿using IMDB_project.Models;
+﻿using IA_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

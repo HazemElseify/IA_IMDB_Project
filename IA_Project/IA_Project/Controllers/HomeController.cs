@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IA_Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace IMDB_project.Controllers
     {
         public ActionResult Index()
         {
+            database.deleteMovie(1);
             return View();
         }
 

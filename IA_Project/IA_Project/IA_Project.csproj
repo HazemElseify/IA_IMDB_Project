@@ -124,7 +124,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Actors.cs" />
-    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\database.cs" />
     <Compile Include="Models\Director.cs" />
     <Compile Include="Models\Movie.cs" />
