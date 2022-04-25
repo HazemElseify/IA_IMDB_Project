@@ -284,66 +284,66 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.id</td>
-                                <td>
-                                    <img src="@item.imge" alt="Cinque Terre" style="max-width:15%;">
-                                </td>
-                                <td>@item.Fname</td>
-                                <td>@item.Lname</td>
-                                <td>@item.age</td>
-                                <td>
-                                    <a href="#" class="view" title="View" data-toggle="modal"><i class="material-icons">&#xE417;</i></a>
-                                    <a href="#" class="edit" title="Edit" data-toggle="modal" data-target="#@item.id"><i class="material-icons">&#xE254;</i></a>
-                                    <a href="@Url.Action("homeactordelete", "admin" , new {id=item.id})" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="@item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="@item.id">Edit Actor</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
+                                <tr>
+                                    <td>@item.id</td>
+                                    <td>
+                                        <img src="@item.imge" alt="@item.Fname" class="rounded-circle" width="50">
+                                    </td>
+                                    <td>@item.Fname</td>
+                                    <td>@item.Lname</td>
+                                    <td>@item.age</td>
+                                    <td>
+                                        <a href="@Url.Action("singleActor","admin",new {id=item.id})" class="view" title="View" data-toggle="modal"><i class="material-icons">&#xE417;</i></a>
+                                        <a href="#" class="edit" title="Edit" data-toggle="modal" data-target="#@item.id"><i class="material-icons">&#xE254;</i></a>
+                                        <a href="@Url.Action("homeactordelete", "admin" , new {id=item.id})" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="@item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="@item.id">Edit Actor</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
 
-                                                <div class="modal-body">
-                                                    <form method="post">
-                                                        <div class="form-group">
-                                                            <label>Id</label>
-                                                            <input type="text" class="form-control" name="Id" value=@item.id readonly>
+                                                    <div class="modal-body">
+                                                        <form method="post">
+                                                            <div class="form-group">
+                                                                <label>Id</label>
+                                                                <input type="text" class="form-control" name="Id" value=@item.id readonly>
 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>First Name</label>
-                                                            <input type="text" class="form-control" name="Fname" value=@item.Fname>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>First Name</label>
+                                                                <input type="text" class="form-control" name="Fname" value=@item.Fname>
 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Last Name</label>
-                                                            <input type="text" class="form-control" name="Lname" value=@item.Lname>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Last Name</label>
+                                                                <input type="text" class="form-control" name="Lname" value=@item.Lname>
 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Age</label>
-                                                            <input type="text" class="form-control" name="Age" value=@item.age>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <label>image</label>
-                                                            <img src="@item.imge" alt="Cinque Terre" style="max-width:15%;">
-                                                            <input type="text" class="form-control" name="Img" value=@item.imge>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Age</label>
+                                                                <input type="text" class="form-control" name="Age" value=@item.age>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <label>image</label>
+                                                                <img src="@item.imge" alt="Cinque Terre" style="max-width:15%;">
+                                                                <input type="text" class="form-control" name="Img" value=@item.imge>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

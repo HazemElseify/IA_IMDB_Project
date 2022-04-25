@@ -90,5 +90,75 @@ namespace IA_Project.Models
         public static void updateActor(Actors A)        {            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";            SqlConnection c = new SqlConnection(connectionString);            string sqlquery = "UPDATE actor SET [Fname] = @Fname, [Lname] = @Lname, [Age] = @Age, [img] =@img WHERE [Id] = @Id";            SqlCommand command = new SqlCommand(sqlquery, c);            command.Parameters.AddWithValue("@Fname", A.Fname);            command.Parameters.AddWithValue("@Lname", A.Lname);            command.Parameters.AddWithValue("@Age", A.age);            command.Parameters.AddWithValue("@img", A.imge);            command.Parameters.AddWithValue("@Id", A.id);            c.Open();            command.ExecuteNonQuery();            c.Close();        }
 
         public static void deleteActor(int id)        {            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";            SqlConnection c = new SqlConnection(connectionString);            string sqlquery = "delete from actor where Id = @Id";            SqlCommand command = new SqlCommand(sqlquery, c);            command.Parameters.AddWithValue("@Id", id);            c.Open();            command.ExecuteNonQuery();            c.Close();        }
+        public static Actors RetriveActor(int id)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            SqlConnection c = new SqlConnection(connectionString);
+            string sqlquery = "select * from actor where Id = @Id";
+            SqlCommand command = new SqlCommand(sqlquery, c);
+            command.Parameters.AddWithValue("@Id", id);
+            c.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            Actors a = new Actors();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                a.id = reader.GetInt32(0);
+                a.Fname = reader.GetString(1);
+                a.Lname = reader.GetString(2);
+                a.age = reader.GetInt32(3);
+                a.imge = reader.GetString(4);
+            }
+            c.Close();
+            return a;
+        }
+        public static Movie RetriveMovie(int id)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            SqlConnection c = new SqlConnection(connectionString);
+            string sqlquery = "select * from movie where Id = @Id";
+            SqlCommand command = new SqlCommand(sqlquery, c);
+            command.Parameters.AddWithValue("@Id", id);
+            c.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            Movie m = new Movie();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                m = new Movie
+                {
+                    id = reader.GetInt32(0),
+                    name = reader.GetString(1),
+                    desc = reader.GetString(2),
+                    genre = reader.GetString(3),
+                    imge = reader.GetString(4)
+                };
+
+            }
+            c.Close();
+            return m;
+        }
+        public static List<Movie> GetMoviesOfActor(int id)
+        {
+            List<Movie> ret = new List<Movie>();
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            SqlConnection c = new SqlConnection(connectionString);
+            string sqlquery = "select idmovie from moviesactors where idactor=@idactor";
+            SqlCommand command = new SqlCommand(sqlquery, c);
+            c.Open();
+            command.Parameters.AddWithValue("@idactor", id);          
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int movieid = reader.GetInt32(0);
+                    ret.Add(RetriveMovie(movieid));
+                }
+            }
+            return ret;
+        }
+        public static void deleteactormovie(int actorid,int movieid)        {            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=IAPROJECT;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";            SqlConnection c = new SqlConnection(connectionString);            string sqlquery = "delete from moviesactors where idactor = @actorid and idmovie=@movieid";            SqlCommand command = new SqlCommand(sqlquery, c);            command.Parameters.AddWithValue("@actorid", actorid);
+            command.Parameters.AddWithValue("@movieid", movieid);            c.Open();            command.ExecuteNonQuery();            c.Close();        }
     }
 }

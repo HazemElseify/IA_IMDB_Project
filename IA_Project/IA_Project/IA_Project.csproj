@@ -122,6 +122,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\actormovies.cs" />
     <Compile Include="Models\Actors.cs" />
     <Compile Include="Models\database.cs" />
     <Compile Include="Models\Director.cs" />
@@ -457,6 +458,7 @@
     <Content Include="Views\admin\homeactor.cshtml" />
     <Content Include="Views\admin\homedirector.cshtml" />
     <Content Include="Views\admin\test.cshtml" />
+    <Content Include="Views\admin\singleActor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

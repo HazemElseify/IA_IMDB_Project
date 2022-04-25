@@ -43,8 +43,21 @@ namespace IA_Project.Controllers
         {
             return View();
         }
+        public ActionResult singleActor(int id)
+        {
+            Actors a = database.RetriveActor(id);
+            List<Movie> listofmovie = database.GetMoviesOfActor(id);
+                return View(new actormovies{Actor = a,listofmovies = listofmovie});
+        }
+        public ActionResult deleteactormovie(int actorid,int movieid)
+        {
+            database.deleteactormovie(actorid, movieid);
+        
+            return RedirectToAction("singleActor",new {id=actorid});
+        }
         public ActionResult test()
         {
+
             return View();
         }
 
